@@ -14,7 +14,9 @@ is the primary goal of this data format. Operations that shall be fast are
 
 
 ### Compactness
-is at first a goal to enhance efficient data access - smaller data often leads to faster data access due to the memory hierarchy. Secondly, as a compact file format, flatmap files can be used to transfer osm datasets, making it an alternative to the currently prevailing pbf file format.
+is at first a goal to enhance efficient data access - smaller data often leads to faster data access due to the memory hierarchy. Secondly, as a compact file format, flatmap files can be used to transfer osm datasets, making it an alternative to the currently prevailing pbf file format. [See also](https://github.com/snuup/flatmap/wiki/Compactness)
+
+
 
 
 ## File Format
@@ -22,7 +24,7 @@ is at first a goal to enhance efficient data access - smaller data often leads t
 A flat-map-file holds these elements:
 
 | name                      | mandatory  |
-|:-|--|
+|:-|:-|
 | file-header               | yes        |
 | nodes-blocktable          | no         |
 | ways-blocktable           | no         |
