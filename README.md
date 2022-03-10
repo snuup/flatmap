@@ -26,12 +26,12 @@ A flat-map-file holds these elements:
 | name                      | mandatory  |
 |:-|:-|
 | file-header               | yes        |
-| nodes-blocktable          | no         |
-| ways-blocktable           | no         |
-| relations-blocktable      | no         |
 | nodes-blocks              | no         |
 | ways-blocks               | no         |
 | relations-blocks          | no         |
+| nodes-blocktable          | no         |
+| ways-blocktable           | no         |
+| relations-blocktable      | no         |
 | string-table              | no         |
 
 In practice all these elements are available, there will always be at least 1 string and usually at least 1 node, way and relation. The access path from an osm-element-id to the element is:
