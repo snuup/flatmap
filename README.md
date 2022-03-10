@@ -1,4 +1,4 @@
-# FlatMap - a binary format for OpenStreetMap data
+# FlatMap - a binary file format for OpenStreetMap data
 
 <br/>
 <br/>
