@@ -42,7 +42,7 @@ There is no neccessity to store all nodes/ways/relations-blocks as a sequence, t
 
 ## Sorting
 
-The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables are the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the local-ids inside the blocks must be ordered as well.
+The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables are the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the elements inside the blocks must be ordered as well.
 
 
 ## File-Header
