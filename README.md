@@ -83,7 +83,7 @@ The mandatory file-header points to all other elements. **Links** are expressed 
 | length | int32 | varint encoded number of utf8 bytes
 | text | utf8[] |
 
-**maximum value needed**: Currently, that largest strings have a length of 765 utf8 bytes, one of them is the description here: https://www.openstreetmap.org/relation/12372925 .
+**maximum value needed**: Currently, the largest strings have a length of 765 utf8 bytes, one of them is the description here: https://www.openstreetmap.org/relation/12372925 .
 
 **encoding**: 99,67% of the strings have a length <= 127 such that varint encoding uses 1 byte for the length field.
 
