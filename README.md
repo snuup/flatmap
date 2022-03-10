@@ -22,8 +22,7 @@ is the primary goal of this data format. Operations that shall be fast are
 
 
 ### Compactness
-is at first a goal to enhance efficient data access - smaller data often leads to faster data access due to the memory hierarchy. Secondly, as a compact file format, flatmap files can be used to transfer osm datasets, making it an alternative to the currently prevailing pbf file format. [See also](https://github.com/snuup/flatmap/wiki/Compactness)
-
+supports efficiency, because smaller data often leads to faster data access. Begin compact makes flatmap a usful format for the transfer of osm datasets, making it an alternative to the prevailing pbf file format. [See also](https://github.com/snuup/flatmap/wiki/Compactness)
 
 
 
@@ -42,15 +41,25 @@ A flat-map-file holds these elements:
 | relations-blocktable      | no         |
 | string-table              | no         |
 
-In practice all these elements are available, there will always be at least 1 string and usually at least 1 node, way and relation. The access path from an osm-element-id to the element is:
+The dependencies considering the links inside these elements and their number of occuriencies are:
 
-file-header -> blocktable -> block -> element
+```
+file-header (1)
+-> nodes-blocktable (0|1)
+    -> nodes-blocks (0..*)
+-> ways-blocktable (0|1)
+    -> ways-blocks (0..*)
+-> relations-blocktable (0|1)
+    -> relations-blocks (0..*)
+-> string-table (0|1)
+```
 
-There is no neccessity to store all nodes/ways/relations-blocks as a sequence, the only requirement is that all links are valid. While flatmap is designed as a simple readonly file format, its utility as an updateable file format is also envisaged and this flexibility becomes important than. When creating a flatmap file from another source, like from a pbf file, the layout above is suggested.
+There is no neccessity to store all nodes/ways/relations-blocks as a sequence, the only requirement is that all links are valid. While flatmap is designed as a simple readonly file format, its utility as an updateable file format is also envisaged and this flexibility of allocation becomes relevant than.
+
 
 ## Sorting
 
-The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables are the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the elements inside the blocks must be ordered as well.
+The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the elements inside the blocks must be ordered as well.
 
 
 ## File-Header
