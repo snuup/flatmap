@@ -34,23 +34,23 @@ A flat-map-file holds these elements:
 | name                      | mandatory  |
 |:-|:-|
 | file-header               | yes        |
-| nodes-blocktable          | no         |
-| ways-blocktable           | no         |
-| relations-blocktable      | no         |
 | nodes-blocks              | no         |
 | ways-blocks               | no         |
 | relations-blocks          | no         |
+| nodes-blocktable          | no         |
+| ways-blocktable           | no         |
+| relations-blocktable      | no         |
 | string-table              | no         |
 
 In practice all these elements are available, there will always be at least 1 string and usually at least 1 node, way and relation. The access path from an osm-element-id to the element is:
 
-file-header -> nodes-blocktable -> nodes-block
+file-header -> blocktable -> block -> element
 
-There is no neccessity to store all nodes/ways/relations-blocks as a sequence, those blocks just need to be accessible by a link from a blocktable. While flatmap is designed as a simple efficient readonly file format, its utility as an updateable file format is also envisaged and this flexibility becomes important than. When creating a flatmap file from another source, like from a pbf file, the file format above is suggested, where all nodes-blocks are stored in a row as well as the ways and relations blocks.
+There is no neccessity to store all nodes/ways/relations-blocks as a sequence, the only requirement is that all links are valid. While flatmap is designed as a simple readonly file format, its utility as an updateable file format is also envisaged and this flexibility becomes important than. When creating a flatmap file from another source, like from a pbf file, the layout above is suggested.
 
 ## Sorting
 
-The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables are the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the local-ids inside the blocks must be ordered as well.
+The blocktables and the blocks are considered a BTree data structure, a B+Tree where all data is in the leaves. The blocks are the leafs, the 3 blocktables are the 3 roots. Accordingly, BlockTableEntries must be ordered by their first-id values and the elements inside the blocks must be ordered as well.
 
 
 ## File-Header
@@ -91,7 +91,7 @@ The mandatory file-header points to all other elements. **Links** are expressed 
 | length | int32 | varint encoded number of utf8 bytes
 | text | utf8[] |
 
-**maximum value needed**: Currently, that largest strings have a length of 765 utf8 bytes, one of them is the description here: https://www.openstreetmap.org/relation/12372925 .
+**maximum value needed**: Currently, the largest strings have a length of 765 utf8 bytes, one of them is the description here: https://www.openstreetmap.org/relation/12372925 .
 
 **encoding**: 99,67% of the strings have a length <= 127 such that varint encoding uses 1 byte for the length field.
 
@@ -114,7 +114,7 @@ This structure is used by both string indexes: by string-id and by string (alpha
 | tag-size | 1  | byte | datatype of the tagsizes array: 1 &vert; 2 &vert; 4 &vert; 8 |
 |**arrays**
 | local-ids | | int[] | 1, 2, 4 or 8 byte sized integer
-| lon-lat | 8 | LonLat[] | lon-lat of the node
+| lon-lat |  | LonLat[] | lon-lat of the node
 | tag-sizes | | int[] | 1, 2, 4 or 8 byte sized integer
 |**streams**
 | tag-stream | | | stream of varint encoded key-value sequence for all nodes
