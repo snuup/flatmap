@@ -1,5 +1,13 @@
 # FlatMap - a binary format for OpenStreetMap data
 
+<br/>
+<br/>
+
+![OpenStreeMap Logo](/images/osm-logo.png)
+
+<br/>
+<br/>
+
 ## Purpose
 
 ### Efficient data access
