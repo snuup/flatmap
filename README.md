@@ -38,7 +38,7 @@ In practice all these elements are available, there will always be at least 1 st
 
 file-header -> blocktable -> block -> element
 
-There is no neccessity to store all nodes/ways/relations-blocks as a sequence, those blocks just need to be accessible via link from a blocktable. While flatmap is designed as a simple readonly file format, its utility as an updateable file format is also envisaged and this flexibility becomes important than. When creating a flatmap file from another source, like from a pbf file, the file format above is suggested, where all nodes-blocks are stored in a row as well as the ways and relations blocks.
+There is no neccessity to store all nodes/ways/relations-blocks as a sequence, the only requirement is that all links are valid. While flatmap is designed as a simple readonly file format, its utility as an updateable file format is also envisaged and this flexibility becomes important than. When creating a flatmap file from another source, like from a pbf file, the layout above is suggested.
 
 ## Sorting
 
