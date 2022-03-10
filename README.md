@@ -106,7 +106,7 @@ This structure is used by both string indexes: by string-id and by string (alpha
 | tag-size | 1  | byte | datatype of the tagsizes array: 1 &vert; 2 &vert; 4 &vert; 8 |
 |**arrays**
 | local-ids | | int[] | 1, 2, 4 or 8 byte sized integer
-| lon-lat | 8 | LonLat[] | lon-lat of the node
+| lon-lat |  | LonLat[] | lon-lat of the node
 | tag-sizes | | int[] | 1, 2, 4 or 8 byte sized integer
 |**streams**
 | tag-stream | | | stream of varint encoded key-value sequence for all nodes
