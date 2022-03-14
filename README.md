@@ -138,7 +138,7 @@ tag-stream-lengths of the preceeding nodes has to be computed.
 ## LonLat
 | name | size | type | comment |
 |:-|:-|:-|:-|
-| lon | 4 | int | logitude in 100 nanodegrees
+| lon | 4 | int | longitude in 100 nanodegrees
 | lat | 4 | int | latitude in 100 nanodegrees
 
 
