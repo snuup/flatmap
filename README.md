@@ -20,8 +20,8 @@ is the primary goal of this data format. Operations that shall be fast are
 - iterate all relations
 - getnodes (wayid)
 
-the methods getnode/way/relation are log(n)<br/>
-the iterators locate the first item in log(n) and are then linear to the number of iterated elements<br/>
+getnode/way/relation are log(n)<br/>
+iterators locate the first item in log(n) and are then linear to the number of iterated elements<br/>
 getnodes (wayid) accesses the way in log(n), iterating the nodes is linear to the number of nodes<br/>
 
 ### Compactness
